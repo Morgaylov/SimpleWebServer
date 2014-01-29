@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Registration form</title>
+    <link rel="stylesheet" type="text/css" href="../css/bootstrap.css">
+    <script type="text/javascript" src="../jQuery.js"></script>
+
+</head>
+<body>
+<div style="text-align: center">
+<form id="test_form" method = 'POST'>
+<p>Email: <input type="text" name="email"></p>
+<p>Password: <input type="text" name="password"></p>
+<p>Confirm password: <input type="text" name="conf_password"></p>
+<p><input type="submit" value="Accept"></p>
+</form>
+<p align="center">Result: <input id="res" type="text" name="result"></p>
+</div>
+
+<script type="text/javascript">
+    $("#test_form").submit(function( event ) {
+        jQuery.post('http://localhost:240/', $(this).serialize()).done(function (e) {
+             $('[name=result]').val(e);
+        });
+        return false;
+    });
+</script>
+</body>
+
+</html>
